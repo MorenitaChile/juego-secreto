@@ -1,12 +1,23 @@
+:root {
+    --primary-blue: #1875E8;
+    --dark-blue-gradient-start: #1354A5;
+    --dark-blue-gradient-mid: #041832;
+    --dark-blue-gradient-end: #01080E;
+    --text-color: white;
+    --disabled-color: #898989;
+    --font-primary: 'Inter', sans-serif;
+    --font-secondary: 'Chakra Petch', sans-serif;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    color: white;
+    color: var(--text-color);
 }
 
 body {
-    background: linear-gradient(#1354A5 0%, #041832 33.33%, #041832 66.67%, #01080E 100%);
+    background: linear-gradient(var(--dark-blue-gradient-start) 0%, var(--dark-blue-gradient-mid) 33.33%, var(--dark-blue-gradient-mid) 66.67%, var(--dark-blue-gradient-end) 100%);
     height: 100vh;
     display: flex;
     align-items: center;
@@ -32,8 +43,8 @@ body::before {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-radius: 24px;
-    border: 1px solid #1875E8;
+    border-radius: 24px;    
+    border: 1px solid var(--primary-blue);
     box-shadow: 4px 4px 20px 0px rgba(1, 8, 14, 0.15);
     background-image: url("img/Ruido.png");
     background-size: 100% 100%;
@@ -55,7 +66,7 @@ body::before {
 
 .container__boton {
     border-radius: 16px;
-    background: #1875E8;
+    background: var(--primary-blue);
     padding: 16px 24px;
     width: 100%;
     font-size: 24px;
@@ -65,7 +76,7 @@ body::before {
 }
 
 .container__boton:disabled {
-    background: #898989;
+    background: var(--disabled-color);
 }
 
 .container__texto {
@@ -73,7 +84,7 @@ body::before {
 }
 
 .container__texto-azul {
-    color: #1875E8;
+    color: var(--primary-blue);
 }
 
 .container__input {
@@ -81,31 +92,42 @@ body::before {
     height: 72px;
     border-radius: 16px;
     background-color: #FFF;
-    border: none;
-    color: #1875E8;
+    border: none;    
+    color: var(--primary-blue);
     padding: 2rem;
     font-size: 24px;
     font-weight: 700;
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-primary);
 }
 
 .container__botones {
     display: flex;
     gap: 2em;
 }
-
 h1 {
-    font-family: 'Chakra Petch', sans-serif;
+    font-family: var(--font-secondary);
     font-size: 72px;
     padding-bottom: 3rem;
 }
 
 p,
 button {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-primary);
 }
 
 .texto__parrafo {
     font-size: 32px;
     font-weight: 400;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
 }

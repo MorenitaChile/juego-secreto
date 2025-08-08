@@ -38,8 +38,11 @@ function generarNumeroSecreto() {
     let numeroGenerado = Math.floor(Math.random() * juego.numeroMaximo) + 1;
 
     // Si ya sorteamos todos los números
-    if (juego.listaNumerosSorteados.length == juego.numeroMaximo) {
+    if (juego.listaNumerosSorteados.length === juego.numeroMaximo) {
         asignarTextoElemento('p', 'Ya se sortearon todos los números posibles');
+        // Deshabilitamos los controles para indicar que el juego terminó
+        document.getElementById('valorUsuario').setAttribute('disabled', 'true');
+        document.querySelector('.controles-juego .container__boton').setAttribute('disabled', 'true');
     } else {
         // Si el número generado está incluido en la lista
         if (juego.listaNumerosSorteados.includes(numeroGenerado)) {
@@ -53,17 +56,22 @@ function generarNumeroSecreto() {
 
 function condicionesIniciales() {
     asignarTextoElemento('h1','Juego del número secreto!');
-    asignarTextoElemento('p',`Indica un número del 1 al ${juego.numeroMaximo}`);
+    asignarTextoElemento('p', `Indica un número del 1 al ${juego.numeroMaximo}`);
+    // Sincronizamos el atributo 'max' del input con la variable del juego
+    document.getElementById('valorUsuario').setAttribute('max', juego.numeroMaximo);
     juego.numeroSecreto = generarNumeroSecreto();
     juego.intentos = 1;
 }
 
 function reiniciarJuego() {
-    // Limpiar la caja
+    // 1. Limpiar la caja
     limpiarCaja();
-    // Indicar mensaje de intervalo de números, generar nuevo número y reiniciar intentos
+    // 2. Habilitar controles en caso de que estuvieran deshabilitados
+    document.getElementById('valorUsuario').removeAttribute('disabled');
+    document.querySelector('.controles-juego .container__boton').removeAttribute('disabled');
+    // 3. Indicar mensaje de intervalo de números, generar nuevo número y reiniciar intentos
     condicionesIniciales();
-    // Deshabilitar el botón de nuevo juego
+    // 4. Deshabilitar el botón de nuevo juego
     document.querySelector('#reiniciar').setAttribute('disabled', 'true');
 }
 
@@ -152,6 +160,10 @@ function encontrarPosicion(lista, elemento) {
 
 // 10. Crea una función que reciba dos listas y devuelva una nueva con la suma de sus elementos.
 function sumarListas(lista1, lista2) {
+    if (lista1.length !== lista2.length) {
+        console.error("Las listas deben tener el mismo tamaño para ser sumadas.");
+        return []; // Devolvemos una lista vacía si no cumplen la condición
+    }
     let listaSuma = [];
     for (let i = 0; i < lista1.length; i++) {
         listaSuma.push(lista1[i] + lista2[i]);
