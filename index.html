@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&family=Inter:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>JS Game</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="container__contenido">
+            <div class="container__informaciones">
+                <div class="container__texto">
+                    <h1></h1>
+                    <p class="texto__parrafo"></p>
+                </div>
+                <input type="number" id="valorUsuario" min="1" max="10" class="container__input">
+                <div class="chute container__botones">
+                    <button onclick="verificarIntento();" class="container__boton">Intentar</button>
+                    <button onclick="reiniciarJuego();" class="container__boton" id="reiniciar" disabled>Nuevo juego</button>
+                </div>
+                <!-- Botones para llamar a las nuevas funciones -->
+                <div class="container__botones">
+                    <button onclick="mostrarLenguajes();" class="container__boton">Mostrar Lenguajes</button>
+                    <button onclick="probarFuncionesNumericas();" class="container__boton">Probar Números</button>
+                </div>
+            </div>
+            <img src="./img/ia.png" alt="Una persona mirando a la izquierda" class="container__imagen-persona" />
+        </div>
+    </div>
+
+
+
+    <script src="app.js"></script>    
+    <script>
+        // Función de ejemplo para probar las funciones que trabajan con números
+        function probarFuncionesNumericas() {
+            let listaDeNumeros = [10, 20, 5, 15, 30];
+            console.log(`Lista de números: [${listaDeNumeros}]`);
+            
+            console.log('--- Probando funciones numéricas ---');
+            console.log(`El promedio es: ${calcularPromedio(listaDeNumeros)}`);
+            mostrarMayorMenor(listaDeNumeros);
+            console.log(`La suma de los elementos es: ${sumarElementos(listaDeNumeros)}`);
+            console.log(`La posición del número 15 es: ${encontrarPosicion(listaDeNumeros, 15)}`);
+            console.log(`La lista con los cuadrados es: [${cuadradoDeElementos(listaDeNumeros)}]`);
+        }
+    </script>
+
+</body>
+
+</html>
