@@ -14,6 +14,9 @@ function asignarTextoElemento(elemento, texto) {
 function verificarIntento() {
     let numeroDeUsuario = parseInt(document.getElementById('valorUsuario').value);
     
+    // Mostramos en la consola el número que el usuario ingresó
+    console.log('Intento del usuario:', numeroDeUsuario);
+    
     if (numeroDeUsuario === juego.numeroSecreto) {
         // El usuario acertó
         asignarTextoElemento('p', `¡Acertaste el número en ${juego.intentos} ${(juego.intentos === 1) ? 'vez' : 'veces'}!`);
